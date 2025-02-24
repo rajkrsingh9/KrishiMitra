@@ -13,13 +13,13 @@ function toggleMenu() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("../html/nav.html")
+    fetch("html/nav.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar").innerHTML = data;
         });
 
-    fetch("../html/footer.html")
+    fetch("html/footer.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("footer").innerHTML = data;
