@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>NeerVaani-Dashboard</title>
+    <link rel="shortcut icon" href="../static/images/logo.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e5f3f5;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+
+            margin: 50px auto;
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .selectors {
+            margin-bottom: 40px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-right: 15px;
+            color: #444;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            margin-right: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            outline: none;
+        }
+
+        #insights {
+            width: 100%;
+            height: 400px;
+            margin-top: 40px;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .reset-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="navbar"></div> <!---- Navbar loaded here ----->
+
+
+    <div class="container">
+        <h1>Water Insights: Select Region and Crop</h1>
+
+        <div class="selectors">
+            <!-- Region Selection -->
+            <label for="region">Select Region:</label>
+            <select id="region" onchange="updateGraph()">
+                <option value="north">North Region</option>
+                <option value="south">South Region</option>
+                <option value="east">East Region</option>
+                <option value="west">West Region</option>
+            </select>
+
+            <!-- Crop Selection -->
+            <label for="crop">Select Crop:</label>
+            <select id="crop" onchange="updateGraph()">
+                <option value="rice">Rice</option>
+                <option value="wheat">Wheat</option>
+                <option value="corn">Corn</option>
+                <option value="sugarcane">Sugarcane</option>
+            </select>
+        </div>
+
+        <!-- Water Insights Section -->
+        <div class="chart-container">
+            <canvas id="waterChart"></canvas>
+        </div>
+
+        <!-- Reset Button -->
+        <button class="reset-button" onclick="resetChart()">Reset Chart</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Sample water data for different regions and crops
+        const data = {
+            north: {
+                rice: { surfaceWater: 200, groundwater: 50, total: 250 },
+                wheat: { surfaceWater: 180, groundwater: 40, total: 220 },
+                corn: { surfaceWater: 160, groundwater: 60, total: 220 },
+                sugarcane: { surfaceWater: 220, groundwater: 70, total: 290 }
+            },
+            south: {
+                rice: { surfaceWater: 220, groundwater: 60, total: 280 },
+                wheat: { surfaceWater: 190, groundwater: 50, total: 240 },
+                corn: { surfaceWater: 180, groundwater: 70, total: 250 },
+                sugarcane: { surfaceWater: 250, groundwater: 80, total: 330 }
+            },
+            east: {
+                rice: { surfaceWater: 230, groundwater: 80, total: 310 },
+                wheat: { surfaceWater: 200, groundwater: 60, total: 260 },
+                corn: { surfaceWater: 170, groundwater: 90, total: 260 },
+                sugarcane: { surfaceWater: 240, groundwater: 90, total: 330 }
+            },
+            west: {
+                rice: { surfaceWater: 210, groundwater: 70, total: 280 },
+                wheat: { surfaceWater: 180, groundwater: 50, total: 230 },
+                corn: { surfaceWater: 160, groundwater: 80, total: 240 },
+                sugarcane: { surfaceWater: 230, groundwater: 100, total: 330 }
+            }
+        };
+
+        // Global variable to hold the chart
+        let chart;
+
+        // Function to update the chart based on the selected region and crop
+        function updateGraph() {
+            const region = document.getElementById('region').value;
+            const crop = document.getElementById('crop').value;
+
+            // Get the data for the selected region and crop
+            const selectedData = data[region][crop];
+
+            // If chart exists, destroy it before creating a new one
+            if (chart) {
+                chart.destroy();
+            }
+
+            // Get the canvas element to draw the chart
+            const ctx = document.getElementById('waterChart').getContext('2d');
+
+            // Create the new chart with animation
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Surface Water', 'Groundwater', 'Total'],
+                    datasets: [{
+                        label: `${crop.charAt(0).toUpperCase() + crop.slice(1)} Water Footprint in ${region.charAt(0).toUpperCase() + region.slice(1)} Region`,
+                        data: [selectedData.surfaceWater, selectedData.groundwater, selectedData.total],
+                        backgroundColor: ['#FF5733', '#33B5FF', '#33FF57'],
+                        borderColor: ['#FF5733', '#33B5FF', '#33FF57'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        duration: 1000, // Smooth chart transition
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            ticks: {
+                                beginAtZero: true,
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to reset the chart (clear it and allow redraw)
+        function resetChart() {
+            // Destroy the current chart
+            if (chart) {
+                chart.destroy();
+            }
+
+            // Clear the canvas to prepare for the next chart
+            const ctx = document.getElementById('waterChart').getContext('2d');
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            // Re-render the initial chart
+            updateGraph();
+        }
+
+        // Initial graph rendering
+        updateGraph();
+    </script>
+
+    <div id="footer"></div> <!-- Footer will be loaded here -->
+    <button id="backToTop">↑</button>
+
+    <script src="../static/js/script.js"></script>
+
+
+</body>
+
+</html>

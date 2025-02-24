@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>NeerVaani-Dashboard</title>
+    <link rel="shortcut icon" href="../static/images/logo.png" type="image/x-icon" />
+    <style>
+        .container-blog {
+            background: url('../static/images/blog-fp.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 90vh;
+            margin-top: 80px;
+        }
+
+
+        .content-blog {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .content-blog h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .content-blog button {
+            background-color: #243d6f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .content-blog button:hover {
+            background-color: #35589e;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="navbar"></div> <!---- Navbar loaded here ----->
+
+
+    <div class="container-blog">
+        <div class="content-blog">
+            <h1>Welcome to our Blog</h1>
+            <button onclick="window.location.href='../blog.html'">Explore</button>
+        </div>
+    </div>
+
+
+    <div class="second-sec">
+        <div class="blog-text">
+            <h2>WATER FOOTPRINTS AWARENESS</h2>
+            <p>Water is one of the most fundamental resources used to support life on earth. As often times referred to
+                as the "elixir of life", water can facilitate survival between humans, animals, and plants. It is a
+                finite source; its preservation is vital for sustainable development. And that is why water is crucially
+                important, as to be elaborated below.</p>
+        </div>
+    </div>
+    <div class="div">
+
+    </div>
+
+    <div id="footer"></div> <!-- Footer will be loaded here -->
+    <button id="backToTop">↑</button>
+
+    <script src="../static/js/script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+.dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 40px 0px;
+}
+.container-drop {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px 60px;
+    padding: 50px 0;
+}
+.container-drop .drop{
+    position: relative;
+    width: 350px;
+    height: 350px;
+    /* background: #888; */
+box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05),
+25px 35px 20px rgba(0,0,0,0.05),
+25px 30px 30px rgba(0,0,0,0.05),
+inset -20px -20px 25px rgba(255,255,255,255.09);
+}
+.container-drop  .drop:nth-child(1){
+    border-radius: 55% 45% 51% 49% / 35% 33% 67% 65%;
+    transition: 0.5s;
+}
+.container-drop  .drop:nth-child(2){
+    transition: 0.5s;
+    border-radius: 62% 38% 32% 68% / 38% 43% 57% 62% ;
+}
+.container-drop  .drop:nth-child(3){
+    transition: 0.5s;
+    border-radius: 60% 40% 32% 68% / 38% 65% 35% 62% ;
+}
+.container-drop  .drop:nth-child(1):hover,
+.container-drop  .drop:nth-child(2):hover,
+.container-drop  .drop:nth-child(3):hover{
+    border-radius:50%;
+}
+.container-drop .drop::before{
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+.container-drop .drop::after{
+    content: '';
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+.container-drop .drop .content-drop{
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 30px 40px;
+}
+.container-drop .drop .content-drop h2{
+    position: relative;
+    left: 40%;
+    width: 50px;
+    height: 50px;
+    /* background: #222; */
+    border-radius: 50%;
+    padding-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    color: var(--clr);
+    box-shadow: inset 10px 10px 10px rgba(0,0,0,0.05),
+15px 25px 10px rgba(0,0,0,0.05),
+15px 20px 20px rgba(0,0,0,0.05),
+inset -10px -10px 15px rgba(255,255,255,0.09);
+}
+.container-drop .drop .content-drop p{
+    text-align: center;
+    padding: 20px;
+    color: #333;
+}
+.container-drop .drop .content-drop a{
+   text-decoration: none;
+   position: relative;
+   left: 35%;
+   background: var(--clr);
+   padding: 5px 10px;
+   border-radius: 20px;
+   color: #fff;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 600;
+}
