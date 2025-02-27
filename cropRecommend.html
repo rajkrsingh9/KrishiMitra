@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=" css/dashboard.css">
     <link rel="stylesheet" href=" css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
     <title>NeerVaani-Crop Recommend</title>
     <link rel="shortcut icon" href=" images/logo.png" type="image/x-icon" />
 
@@ -16,83 +18,94 @@
 
     <div id="navbar"></div> <!---- Navbar loaded here ----->
 
-    <div class="form-container">
-        <h2>🌾 Smart Crop Prediction Form</h2>
-        <div class="progress-bar">
-            <div class="progress"></div>
+    <div class="crop-container">
+        <h2 class="text-center">Crop Recommendation System</h2>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="progress-step active" data-step="1">1</div>
+            <div class="progress-step" data-step="2">2</div>
+            <div class="progress-step" data-step="3">3</div>
         </div>
 
-        <form id="cropForm">
+        <form id="cropForm" enctype="multipart/form-data">
+            <!-- Step 1: Farmer Details -->
+            <div class="form-step active">
+                <h4>Farmer Details</h4>
+                <label>Farmer Name:</label>
+                <input type="text" name="farmerName" id="farmerName" required class="form-control">
 
-            <!-- Step 1: Basic Information -->
-            <div class="form-step">
-                <label>👨‍🌾 Farmer Name *</label>
-                <input type="text" id="farmerName" required>
+                <label>Location / Region:</label>
+                <input type="text" name="location" id="location" required class="form-control">
 
-                <label>📍 Location / Region *</label>
-                <input type="text" id="location" required>
-
-                <label>🌱 Land Size *</label>
-                <input type="number" id="landSize" required>
-                <select id="landUnit">
+                <label>Land Size:</label>
+                <input type="number" name="landSize" id="landSize" required class="form-control">
+                <select name="landUnit" id="landUnit" class="form-control">
                     <option value="Katha">Katha</option>
                     <option value="Bigha">Bigha</option>
                     <option value="Acres">Acres</option>
                 </select>
 
-                <label>⏳ Term Period (Months) *</label>
-                <input type="number" id="termPeriod" required>
+                <label>Last Crop Grown:</label>
+                <input type="text" name="lastCrop" id="lastCrop" class="form-control">
+
+                <label>Available Term Period (Months):</label>
+                <input type="number" name="termPeriod" id="termPeriod" class="form-control">
 
                 <button type="button" class="next-btn">Next</button>
             </div>
 
             <!-- Step 2: Climate Factors -->
             <div class="form-step">
-                <label>🌡️ Temperature (°C)</label>
-                <input type="number" id="temperature" placeholder="Leave empty to auto-fetch">
+                <h4>Climate Factors (Optional)</h4>
+                <label>Temperature (in degree Celcius):</label>
+                <input type="number" name="temperature" id="temperature" class="form-control">
 
-                <label>💧 Humidity (%)</label>
-                <input type="number" id="humidity" placeholder="Leave empty to auto-fetch">
+                <label>Humidity:</label>
+                <input type="number" name="humidity" id="humidity" class="form-control">
 
-                <label>🌧️ Rainfall (mm)</label>
-                <input type="number" id="rainfall" placeholder="Leave empty to auto-fetch">
+                <label>Rainfall:</label>
+                <input type="number" name="rainfall" id="rainfall" class="form-control">
 
-                <button type="button" class="prev-btn">Back</button>
+                <button type="button" class="prev-btn">Previous</button>
                 <button type="button" class="next-btn">Next</button>
             </div>
 
             <!-- Step 3: Soil Factors -->
             <div class="form-step">
-                <label>📷 Upload Soil Image</label>
-                <input type="file" id="soilImage">
+                <h4>Soil Factors</h4>
+                <label>Upload Soil Image:</label>
+                <input type="file" name="soilImage" id="soilImage" class="form-control" accept="image/*">
 
-                <label>🌍 Soil Type</label>
-                <input type="text" id="soilType" placeholder="Optional">
+                <label>Soil Type:</label>
+                <input type="text" name="soilType" id="soilType" class="form-control">
 
-                <label>🧪 Soil pH Value</label>
-                <input type="number" id="soilPh" step="0.1" placeholder="Optional">
+                <label>Soil pH Value:</label>
+                <input type="number" step="0.1" name="soilPH" id="soilPH" class="form-control">
 
-                <label>💦 Moisture Retention Capacity</label>
-                <input type="number" id="moistureRetention" placeholder="Optional">
+                <label>Moisture Retention:</label>
+                <input type="text" name="moistureRetention"  id="moistureRetention" class="form-control">
 
-                <label>📏 Topography & Drainage</label>
-                <input type="text" id="topography" placeholder="Optional">
+                <label>Nitrogen Content:</label>
+                <input type="number" name="nitrogen" id="nitrogen" class="form-control">
 
-                <label>🧬 Nitrogen Content (mg/kg)</label>
-                <input type="number" id="nitrogen" placeholder="Optional">
+                <label>Phosphorus Content:</label>
+                <input type="number" name="phosphorus" id="phosphorus" class="form-control">
 
-                <label>🧪 Phosphorus Content (mg/kg)</label>
-                <input type="number" id="phosphorus" placeholder="Optional">
+                <label>Potassium Content:</label>
+                <input type="number" name="potassium" id="potassium" class="form-control">
 
-                <label>⚡ Potassium Content (mg/kg)</label>
-                <input type="number" id="potassium" placeholder="Optional">
-
-                <button type="button" class="prev-btn">Back</button>
-                <button type="submit">Submit</button>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="submit" class="submit-btn">Submit</button>
             </div>
-
         </form>
     </div>
+    
+
+    <div id="crop-recommendations"></div>
+
+    <script src="js/formHandler.js"></script>
 
 
 
@@ -108,42 +121,56 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background: #f8f9fa;
+        background-color: #f4f4f4;
         margin: 0;
-        
-       
-        height: 100vh;
+        padding: 0;
     }
     
-    .form-container {
+    .crop-container {
+        max-width: 600px;
+        margin: 50px auto;
         background: white;
         padding: 20px;
-        width: 90%;
-        max-width: 500px;
-        border-radius: 10px;
+        border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .text-center {
         text-align: center;
     }
     
-    h2 {
-        margin-bottom: 10px;
-    }
-    
-    .progress-bar {
-        width: 100%;
-        height: 10px;
-        background: #e0e0e0;
-        border-radius: 5px;
+    .progress-container {
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 20px;
         position: relative;
     }
     
-    .progress {
-        height: 100%;
+    .progress-bar {
+        position: absolute;
+        top: 50%;
+        left: 0;
         width: 0%;
-        background: green;
-        border-radius: 5px;
-        transition: width 0.3s;
+        height: 5px;
+        background: #28a745;
+        z-index: -1;
+        transition: width 0.3s ease;
+    }
+    
+    .progress-step {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #ddd;
+        border-radius: 50%;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .progress-step.active {
+        background: #28a745;
+        color: white;
     }
     
     .form-step {
@@ -154,41 +181,33 @@
         display: block;
     }
     
-    input, select {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
     button {
-        width: 100%;
         padding: 10px;
-        margin: 10px 0;
         border: none;
-        background: green;
-        color: white;
         cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
+        margin-top: 10px;
     }
     
-    button:hover {
-        background: darkgreen;
+    .next-btn {
+        background: #28a745;
+        color: white;
     }
     
     .prev-btn {
-        background: gray;
+        background: #ffc107;
+        color: black;
     }
     
-    .prev-btn:hover {
-        background: darkgray;
+    .submit-btn {
+        background: #007bff;
+        color: white;
     }
+    
+    
     
 </style>
 
 </html>
 
 
-AIzaSyCWAo0jYRE3_2TEnE182_oHkmIWktk67AU
+<!-- AIzaSyCWAo0jYRE3_2TEnE182_oHkmIWktk67AU -->

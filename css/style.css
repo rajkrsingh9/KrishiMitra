@@ -39,14 +39,14 @@ html{
 }
 
 
-.left-nav{
+.left-nav {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
+
+
 .left-nav h3{
-  
   font-size: 1.8rem;
 }
 
@@ -56,10 +56,20 @@ html{
   list-style: none;
 }
 
+.mid-nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+
+
 .mid-nav ul li a {
   text-decoration: none;
   color: #156a6c;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .right-nav ul {
@@ -83,33 +93,69 @@ html{
   margin-right: 15px;
 }
 
+
+/* Responsive Navbar for Small Screens */
 @media (max-width: 768px) {
-  .hamburger {
-      display: block;
+  .navbar {
+    position: fixed;
+    bottom: 0;
+    top: unset;
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    background: white;
+    width: 100%;
+    padding: 10px 0;
   }
 
-  .mid-nav, .right-nav {
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 0;
-      background: white;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Center logo and heading at the top */
+  .left-nav {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    background: white;
+    width: 100vw;
+    border-bottom: 1px solid #ddd;
   }
 
-  .mid-nav{
-    margin-top: 30px;
+
+  .left-nav h3 .head1, .head2{
+    font-size: 2rem;
+  }
+
+  .logo-img {
+    width: 40px;
+    height: 50px;
+    margin: 5px 0;
+  }
+
+  .mid-nav {
+    width: 100%;
   }
 
   .mid-nav ul {
-      flex-direction: column;
-      padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
   }
 
-  .mid-nav ul li, .right-nav ul {
-      padding: 10px 0;
+  .mid-nav ul li a {
+    flex-direction: column;
+    font-size: 0.8rem;
+  }
+
+  .mid-nav ul li i {
+    font-size: 1.2rem;
+  }
+
+  .right-nav {
+    display: none; /* Hide login button on small screens */
   }
 }
 
@@ -119,6 +165,7 @@ html{
 .head2{
   color: #127417;
 }
+
 
 
 /* <----------------------------------main section--------------------------------> */
