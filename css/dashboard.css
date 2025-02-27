@@ -36,9 +36,19 @@ inset -20px -20px 25px rgba(255,255,255,255.09);
     transition: 0.5s;
     border-radius: 60% 40% 32% 68% / 38% 65% 35% 62% ;
 }
+.container-drop  .drop:nth-child(4){
+    transition: 0.5s;
+    border-radius: 60% 40% 32% 68% / 38% 65% 35% 62% ;
+}
+.container-drop  .drop:nth-child(5){
+    transition: 0.5s;
+    border-radius: 60% 40% 32% 68% / 38% 65% 35% 62% ;
+}
 .container-drop  .drop:nth-child(1):hover,
 .container-drop  .drop:nth-child(2):hover,
-.container-drop  .drop:nth-child(3):hover{
+.container-drop  .drop:nth-child(3):hover,
+.container-drop  .drop:nth-child(4):hover,
+.container-drop  .drop:nth-child(5):hover{
     border-radius:50%;
 }
 .container-drop .drop::before{
@@ -101,4 +111,68 @@ inset -10px -10px 15px rgba(255,255,255,0.09);
    color: #fff;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: 600;
+}
+
+
+
+/* Responsive Styling */
+@media screen and (max-width: 1200px) {
+    .container-drop {
+        gap: 30px 50px;
+        padding: 40px 0;
+    }
+    .container-drop .drop {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container-drop {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+    .container-drop .drop {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard {
+        padding: 20px;
+    }
+    .container-drop {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .container-drop .drop {
+        width: 250px;
+        height: 250px;
+    }
+    .container-drop .drop .content-drop {
+        padding: 20px;
+    }
+    .container-drop .drop .content-drop p {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container-drop .drop {
+        width: 220px;
+        height: 220px;
+    }
+    .container-drop .drop .content-drop p {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .container-drop .drop .content-drop a {
+        left: 25%;
+        padding: 4px 8px;
+        font-size: 14px;
+    }
 }

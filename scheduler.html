@@ -60,7 +60,7 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
 
-            const response = await fetch('https://neervaani.onrender.com/irrigation-schedule', {
+            const response = await fetch('/irrigation-schedule', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

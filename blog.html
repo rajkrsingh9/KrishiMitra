@@ -8,48 +8,108 @@
     <link rel="stylesheet" href=" css/style.css">
     <title>NeerVaani-Dashboard</title>
     <link rel="shortcut icon" href=" images/logo.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        .container-blog {
-            background: url(' images/blog-fp.gif') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 90vh;
-            margin-top: 80px;
-        }
+       /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container Styling */
+.second-sec {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.blog-text {
+    padding: 20px;
+}
+
+/* Heading Styles */
+h1 {
+    color: #0077b6;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #009688;
+    font-size: 1.6rem;
+    border-left: 4px solid #009688;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+}
+
+/* List Styling */
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    background: #e3f2fd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+ul li b {
+    color: #0277bd;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .second-sec {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    p, ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    p, ul li {
+        font-size: 0.9rem;
+    }
+}
 
 
-        .content-blog {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .content-blog h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .content-blog button {
-            background-color: #243d6f;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .content-blog button:hover {
-            background-color: #35589e;
-        }
+        
     </style>
 
 </head>
@@ -59,27 +119,120 @@
 
     <div id="navbar"></div> <!---- Navbar loaded here ----->
 
-
-    <div class="container-blog">
-        <div class="content-blog">
-            <h1>Welcome to our Blog</h1>
-            <button onclick="window.location.href='blog.html'">Explore</button>
-        </div>
-    </div>
-
-
     <div class="second-sec">
         <div class="blog-text">
-            <h2>WATER FOOTPRINTS AWARENESS</h2>
-            <p>Water is one of the most fundamental resources used to support life on earth. As often times referred to
-                as the "elixir of life", water can facilitate survival between humans, animals, and plants. It is a
-                finite source; its preservation is vital for sustainable development. And that is why water is crucially
-                important, as to be elaborated below.</p>
+            <h1>Revolutionizing Agriculture with AI: How NeerVaani Empowers Farmers</h1>
+    
+            <h2>Introduction</h2>
+            <p>
+                Agriculture is the lifeline of our economy, yet millions of farmers struggle with unpredictable weather, 
+                inefficient irrigation, and lack of real-time data. NeerVaani is changing this by integrating AI, IoT, 
+                and data analytics to provide smart, sustainable, and profitable farming solutions.
+            </p>
+    
+            <h2>The Challenges Farmers Face</h2>
+            <ul>
+                <li>🌾 <b>Uncertain Crop Selection</b> – Farmers often rely on tradition rather than data to choose crops, leading to losses.</li>
+                <li>💧 <b>Water Wastage</b> – Unplanned irrigation drains resources, causing soil degradation and lower yields.</li>
+                <li>📉 <b>Market Volatility</b> – Farmers grow crops without knowing future market demand, resulting in overproduction and financial losses.</li>
+            </ul>
+    
+            <h2>How NeerVaani Solves These Challenges</h2>
+            <ul>
+                <li>🔍 <b>AI-Powered Crop Prediction</b> – Recommends the best crops based on soil, climate, and water availability.</li>
+                <li>💦 <b>Smart Irrigation Scheduling</b> – Uses real-time weather data and IoT sensors to optimize water use.</li>
+                <li>📊 <b>Market Insights & Demand Forecasting</b> – Analyzes crop trends to help farmers make profitable choices.</li>
+                <li>🌍 <b>Water Footprint Calculators</b> – Helps farmers and industries track and reduce water usage.</li>
+            </ul>
+    
+            <h2>The Future of Sustainable Farming</h2>
+            <p>
+                By integrating AI and precision farming, NeerVaani is driving a greener, more efficient agricultural revolution. 
+                We empower farmers to grow smarter, conserve resources, and increase profitability—ensuring a sustainable future for all.
+            </p>
+    
+            <h2>Why Farmers Should Adopt Smart Irrigation</h2>
+            <ul>
+                <li>✅ <b>Saves Water & Money</b> – Reduces water bills while preserving natural resources.</li>
+                <li>✅ <b>Boosts Crop Yields</b> – Ensures plants receive optimal hydration for better growth.</li>
+                <li>✅ <b>Reduces Labor & Manual Effort</b> – Automates irrigation, minimizing workload.</li>
+                <li>✅ <b>Prepares for Climate Change</b> – Helps farmers adapt to unpredictable rainfall and droughts.</li>
+            </ul>
+    
+            <h2>Final Thoughts: A Step Toward Sustainable Farming</h2>
+            <p>
+                With increasing water scarcity, adopting AI-driven irrigation is no longer a luxury—it’s a necessity.
+                Smart AI-driven irrigation empowers farmers, improves productivity, and secures water for future generations.
+            </p>
+    
+            <h1>The Water Footprint of Crops: Which Crops Use the Most and Least Water?</h1>
+            <p>
+                Did you know that growing 1 kg of rice requires about 2,500 liters of water, while 1 kg of potatoes needs only 290 liters? 
+                Understanding a crop’s water footprint can help farmers choose water-efficient crops, conserve resources, and boost sustainability. 
+                This blog explores the water usage of different crops and how farmers can optimize their choices for maximum yield with minimal water use.
+            </p>
+    
+            <h1>The Role of AI in Sustainable Agriculture: How Data-Driven Farming is Changing the Game</h1>
+            <p>
+                Traditional farming relies on experience, but AI-powered tools bring precision, efficiency, and sustainability. 
+                From crop prediction models to AI-based pest control and irrigation, technology is helping farmers make smarter 
+                decisions and reduce waste. Learn how AI is revolutionizing farming and why data-driven agriculture is the future.
+            </p>
+    
+            <h1>Precision Agriculture: How IoT is Transforming Farming</h1>
+            <ul>
+                <li>📡 <b>Monitoring soil moisture</b> – Prevents over-irrigation.</li>
+                <li>🌦️ <b>Using weather data</b> – Adjusts irrigation schedules based on real-time conditions.</li>
+                <li>🚜 <b>Smart farming equipment</b> – Operates autonomously to enhance efficiency.</li>
+            </ul>
+            <p>
+                Discover how IoT is reducing water waste, increasing yields, and making farming more efficient than ever before.
+            </p>
+    
+            <h1>Understanding the Impact of Climate Change on Water Availability for Farmers</h1>
+            <p>
+                Climate change is altering global weather patterns, affecting water availability, and impacting crop yields. 
+                Droughts, erratic monsoons, and rising temperatures are threatening global food security. This blog breaks down:
+            </p>
+            <ul>
+                <li>🌡️ <b>How climate change is affecting water resources</b> for agriculture.</li>
+                <li>💧 <b>Ways farmers can adapt</b> using water-efficient techniques.</li>
+                <li>🔬 <b>The role of AI, IoT, and satellite data</b> in predicting water availability.</li>
+            </ul>
+            <p>Can climate-smart farming help secure our food future?</p>
+    
+            <h1>Water Movement in India: A Path Toward Sustainable Water Management</h1>
+            <p>
+                India is home to 18% of the world's population but has only 4% of its water resources. Since 2010, India has 
+                witnessed several transformative water movements aimed at tackling water scarcity, improving irrigation efficiency, 
+                and restoring traditional water bodies.
+            </p>
+            <p>
+                <b>Key Government Initiatives:</b>
+            </p>
+            <ul>
+                <li>🌊 <b>Jal Shakti Abhiyan</b> – Focuses on groundwater recharge and large-scale conservation efforts.</li>
+                <li>🌿 <b>Atal Bhujal Yojana</b> – Aims at sustainable groundwater management.</li>
+                <li>🏞️ <b>Namami Gange Programme</b> – Works on pollution control and river restoration.</li>
+            </ul>
+            <p>
+                <b>State-Level Programs:</b>
+            </p>
+            <ul>
+                <li>🏝️ <b>Mission Kakatiya (Telangana)</b> – Revived lakes and village reservoirs.</li>
+                <li>💧 <b>Jalyukt Shivar Abhiyan (Maharashtra)</b> – Focused on water conservation.</li>
+            </ul>
+            <p>
+                The <b>Neeranchal Watershed Program</b> and emerging <b>IoT-based smart water management systems</b> are further 
+                strengthening sustainable water use through AI-driven analytics, precision irrigation, and real-time monitoring.
+            </p>
+            <p>
+                With climate change exacerbating water stress, platforms like NeerVaani are playing a crucial role in integrating 
+                data-driven solutions to optimize water use, reduce wastage, and support sustainable farming practices across India.
+            </p>
         </div>
     </div>
-    <div class="div">
-
-    </div>
+    
 
     <div id="footer"></div> <!-- Footer will be loaded here -->
     <button id="backToTop">↑</button>
@@ -90,3 +243,13 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+/* CSS (styles.css) */
