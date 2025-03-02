@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 
     <title>NeerVaani-Crop Recommend</title>
-    <link rel="shortcut icon" href=" images/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href=" images/webicon.png" type="image/x-icon" />
 
 </head>
 
@@ -33,25 +33,47 @@
             <!-- Step 1: Farmer Details -->
             <div class="form-step active">
                 <h4>Farmer Details</h4>
-                <label>Farmer Name:</label>
-                <input type="text" name="farmerName" id="farmerName" required class="form-control">
 
-                <label>Location / Region:</label>
-                <input type="text" name="location" id="location" required class="form-control">
+                <div class="input-container">
+                    <label>Farmer Name:</label>
+                    <input type="text" name="farmerName" id="farmerName" placeholder="Name" required
+                        class="form-control">
+                    <button type="button" class="mic-btn" onclick="startSpeechRecognition('farmerName')">🎤</button>
+                </div>
+
+
+                <div class="input-container">
+                    <label>Location / Region:</label>
+                    <input type="text" name="location" id="location" placeholder="location" required
+                        class="form-control">
+                    <button type="button" class="mic-btn" onclick="startSpeechRecognition('location')">🎤</button>
+                </div>
+
+
+
 
                 <label>Land Size:</label>
                 <input type="number" name="landSize" id="landSize" required class="form-control">
+
                 <select name="landUnit" id="landUnit" class="form-control">
                     <option value="Katha">Katha</option>
                     <option value="Bigha">Bigha</option>
                     <option value="Acres">Acres</option>
                 </select>
 
-                <label>Last Crop Grown:</label>
-                <input type="text" name="lastCrop" id="lastCrop" class="form-control">
+                <div class="input-container">
+                    <label>Last Crop Grown:</label>
+                    <input type="text" name="lastCrop" id="lastCrop" class="form-control">
+                    <button type="button" class="mic-btn" onclick="startSpeechRecognition('lastCrop')">🎤</button>
+                </div>
+
+
 
                 <label>Available Term Period (Months):</label>
                 <input type="number" name="termPeriod" id="termPeriod" class="form-control">
+
+
+
 
                 <button type="button" class="next-btn">Next</button>
             </div>
@@ -59,8 +81,12 @@
             <!-- Step 2: Climate Factors -->
             <div class="form-step">
                 <h4>Climate Factors (Optional)</h4>
+
+
                 <label>Temperature (in degree Celcius):</label>
                 <input type="number" name="temperature" id="temperature" class="form-control">
+
+
 
                 <label>Humidity:</label>
                 <input type="number" name="humidity" id="humidity" class="form-control">
@@ -76,6 +102,7 @@
             <div class="form-step">
                 <h4>Soil Factors</h4>
                 <label>Upload Soil Image:</label>
+
                 <input type="file" name="soilImage" id="soilImage" class="form-control" accept="image/*">
 
                 <label>Soil Type:</label>
@@ -85,7 +112,7 @@
                 <input type="number" step="0.1" name="soilPH" id="soilPH" class="form-control">
 
                 <label>Moisture Retention:</label>
-                <input type="text" name="moistureRetention"  id="moistureRetention" class="form-control">
+                <input type="text" name="moistureRetention" id="moistureRetention" class="form-control">
 
                 <label>Nitrogen Content:</label>
                 <input type="number" name="nitrogen" id="nitrogen" class="form-control">
@@ -101,7 +128,8 @@
             </div>
         </form>
     </div>
-    
+
+
 
     <div id="crop-recommendations"></div>
 
@@ -109,8 +137,48 @@
 
 
 
+
     <div id="footer"></div> <!-- Footer will be loaded here -->
     <button id="backToTop">↑</button>
+    <!-- Start of ChatBot (www.chatbot.com) code -->
+    <script>
+        window.__ow = window.__ow || {};
+        window.__ow.organizationId = "3057f282-9918-46d7-95bb-0e89a0be5c73";
+        window.__ow.template_id = "c9e5f3a2-c43e-4183-890f-c14982a49118";
+        window.__ow.integration_name = "manual_settings";
+        window.__ow.product_name = "chatbot";
+        ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[OpenWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.openwidget.com/openwidget.js", t.head.appendChild(n) } }; !n.__ow.asyncInit && e.init(), n.OpenWidget = n.OpenWidget || e }(window, document, [].slice))
+    </script>
+    <noscript>You need to <a href="https://www.chatbot.com/help/chat-widget/enable-javascript-in-your-browser/"
+            rel="noopener nofollow">enable JavaScript</a> in order to use the AI chatbot tool powered by <a
+            href="https://www.chatbot.com/" rel="noopener nofollow" target="_blank">ChatBot</a></noscript>
+    <!-- End of ChatBot code -->
+
+    <script>
+        function startSpeechRecognition(inputId) {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Your browser does not support speech recognition.');
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onresult = (event) => {
+                document.getElementById(inputId).value = event.results[0][0].transcript;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            recognition.start();
+        }
+    </script>
+
+    <script src="js/one.js"></script>
 
     <script src=" js/script.js"></script>
 
@@ -125,7 +193,7 @@
         margin: 0;
         padding: 0;
     }
-    
+
     .crop-container {
         max-width: 600px;
         margin: 50px auto;
@@ -134,18 +202,18 @@
         border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     .text-center {
         text-align: center;
     }
-    
+
     .progress-container {
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
         position: relative;
     }
-    
+
     .progress-bar {
         position: absolute;
         top: 50%;
@@ -156,7 +224,7 @@
         z-index: -1;
         transition: width 0.3s ease;
     }
-    
+
     .progress-step {
         width: 30px;
         height: 30px;
@@ -167,44 +235,41 @@
         font-size: 16px;
         font-weight: bold;
     }
-    
+
     .progress-step.active {
         background: #28a745;
         color: white;
     }
-    
+
     .form-step {
         display: none;
     }
-    
+
     .form-step.active {
         display: block;
     }
-    
+
     button {
         padding: 10px;
         border: none;
         cursor: pointer;
         margin-top: 10px;
     }
-    
+
     .next-btn {
         background: #28a745;
         color: white;
     }
-    
+
     .prev-btn {
         background: #ffc107;
         color: black;
     }
-    
+
     .submit-btn {
         background: #007bff;
         color: white;
     }
-    
-    
-    
 </style>
 
 </html>
